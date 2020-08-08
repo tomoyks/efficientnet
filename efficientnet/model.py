@@ -343,7 +343,7 @@ def EfficientNet(width_coefficient,
     
     # change to mish.
     # activation = get_swish(**kwargs)
-    activation = tfa.activation.mish
+    activation = tfa.activations.mish
 
 
     # Build stem
