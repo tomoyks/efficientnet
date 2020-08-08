@@ -1,10 +1,9 @@
-FROM tensorflow/tensorflow:1.12.0-py3
+FROM tensorflow/tensorflow:2.2.0-jupyter
 
-# install keras
 RUN pip install \
-    keras==2.2.4 \
-    scikit-image
+    scikit-image \
+    keras_applications
 
 RUN pip install pytest
 
-WORKDIR /project
+WORKDIR /opt/efficientnet
