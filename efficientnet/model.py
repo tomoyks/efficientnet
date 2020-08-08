@@ -35,6 +35,8 @@ from six.moves import xrange
 from keras_applications.imagenet_utils import _obtain_input_shape
 from keras_applications.imagenet_utils import preprocess_input as _preprocess_input
 
+import tensorflow_addons as tfa
+
 from . import get_submodules_from_kwargs
 from .weights import IMAGENET_WEIGHTS_PATH, IMAGENET_WEIGHTS_HASHES, NS_WEIGHTS_HASHES, NS_WEIGHTS_PATH
 
@@ -338,7 +340,11 @@ def EfficientNet(width_coefficient,
             img_input = input_tensor
 
     bn_axis = 3 if backend.image_data_format() == 'channels_last' else 1
-    activation = get_swish(**kwargs)
+    
+    # change to mish.
+    # activation = get_swish(**kwargs)
+    activation = tfa.activation.mish
+
 
     # Build stem
     x = img_input
